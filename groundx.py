@@ -1,5 +1,5 @@
 import streamlit as st
-import groundx-python-sdk
+import groundx-python-sdk as groundx
 import openai
 
 # Initialize GroundX and OpenAI clients using Streamlit secrets
