@@ -1,15 +1,10 @@
-import os
-from dotenv import load_dotenv
 import streamlit as st
 import groundx
 import openai
 
-# Load environment variables
-load_dotenv()
-
-# Initialize GroundX and OpenAI clients
-groundx_client = groundx.Groundx(api_key=os.getenv('GROUNDX_API_KEY'))
-openai.api_key = os.getenv('OPENAI_API_KEY')
+# Initialize GroundX and OpenAI clients using Streamlit secrets
+groundx_client = groundx.Groundx(api_key=st.secrets["groundx_api_key"])
+openai.api_key = st.secrets["openai_api_key"]
 
 def search_groundx(query):
     """Function to perform a search on GroundX and return text results."""
@@ -53,4 +48,3 @@ if st.button('Search and Generate Response'):
         st.text_area("Generated Response from ChatGPT", response, height=150)
     else:
         st.error("Please enter a query to proceed.")
-
